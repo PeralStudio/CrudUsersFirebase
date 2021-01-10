@@ -107,6 +107,9 @@ function resetForm(){
   var buttonCancel = document.querySelector('.cancelar');
   buttonCancel.classList.add('no-visible');
   buttonCancel.classList.remove('visible');
+
+  var h1EditUsers = document.querySelector('#titlechange');
+  h1EditUsers.textContent = 'Agregar Usuarios';
 }
 
 
@@ -181,6 +184,10 @@ function editar(id, nameForFirebase, apellidoForFirebase, edadForFirebase) {
   //var boton = document.getElementById('boton');
   boton.value = "Editar"
 
+  var h1EditUsers = document.querySelector('#titlechange');
+  h1EditUsers.textContent = `Editando ${nameForFirebase}, ${apellidoForFirebase}`;
+
+
   var buttonCancel = document.querySelector('.cancelar');
   /* console.log(buttonCancel); */
   buttonCancel.classList.remove('no-visible');
@@ -237,6 +244,8 @@ function cancelar() {
   var buttonCancel = document.querySelector('.cancelar');
   buttonCancel.classList.add('no-visible');
   buttonCancel.classList.remove('visible');
+  var h1EditUsers = document.querySelector('#titlechange');
+  h1EditUsers.textContent = 'Agregar Usuarios';
 }
 
 
