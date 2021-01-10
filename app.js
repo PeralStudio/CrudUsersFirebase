@@ -92,7 +92,7 @@ function agregarItem(){
             popup: 'animate__animated animate__backInDown'
           },
           hideClass: {
-            popup: 'animate__animated animate__hinge'
+            popup: 'animate__animated animate__backOutDown'
           },
           timer: 2000,
           showConfirmButton: false,
@@ -174,7 +174,7 @@ function eliminar(id){
           popup: 'animate__animated animate__backInDown'
         },
         hideClass: {
-          popup: 'animate__animated animate__backOutDown'
+          popup: 'animate__animated animate__hinge'
         },
         timer: 2000,
         showConfirmButton: false,
