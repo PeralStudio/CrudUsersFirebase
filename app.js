@@ -1,8 +1,8 @@
 // Initializar cloud Storage Firebase...
   firebase.initializeApp({
-    apiKey: 'XXXXX',
-    authDomain: 'XXXXX',
-    projectId: 'XXXXX'
+    apiKey: 'x',
+    authDomain: 'x',
+    projectId: 'x'
   });
 
 var db = firebase.firestore();
@@ -108,6 +108,29 @@ function resetForm(){
   buttonCancel.classList.add('no-visible');
   buttonCancel.classList.remove('visible');
 }
+
+
+//Solo dejar introducir numeros input edad...
+miFormulario = document.querySelector('#edad');
+miFormulario.addEventListener('keypress', function (e){
+	if (!soloNumeros(e)){
+  	e.preventDefault();
+    Toastify({
+      text: "Solo permite introducir numeros",
+      backgroundColor: "linear-gradient(0deg, rgba(220,54,69,1) 0%, rgba(61,10,15,1) 98%)",
+      duration: 3000
+      }).showToast();
+    
+  }
+});
+
+function soloNumeros(e){
+    var key = e.charCode;
+    /* console.log(key); */
+    return key >= 48 && key <= 57;
+}
+
+
 
 //Borrar Usuarios...
 function eliminar(id){
