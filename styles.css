@@ -137,7 +137,6 @@ body{
 @media screen and (max-width: 777px) {
 
     #boton, #buttonCancel {
-        display: flex;
         font-size: 12px;
         cursor: pointer;
         width: 75px;
