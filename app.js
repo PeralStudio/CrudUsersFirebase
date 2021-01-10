@@ -1,8 +1,8 @@
 // Initializar cloud Storage Firebase...
   firebase.initializeApp({
-    apiKey: 'AIzaSyAvnTHIjlD_xN92aud9jbj9XojG7-QUfRU',
-    authDomain: 'pruebalistaitems.firebaseapp.com',
-    projectId: 'pruebalistaitems'
+    apiKey: 'XXXXX',
+    authDomain: 'XXXXX',
+    projectId: 'XXXXX'
   });
 
 var db = firebase.firestore();
