@@ -182,7 +182,7 @@ function editar(id, nameForFirebase, apellidoForFirebase, edadForFirebase) {
   boton.value = "Editar"
 
   var buttonCancel = document.querySelector('.cancelar');
-  console.log(buttonCancel);
+  /* console.log(buttonCancel); */
   buttonCancel.classList.remove('no-visible');
   buttonCancel.classList.add('visible');
 
