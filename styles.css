@@ -8,13 +8,17 @@ body{
 }
 
 .buttons {
+    display: flex;
     text-align: center;
     user-select: none;
+    padding: 5px;
+    justify-content: center;
 }
 
 #boton, #button {
     cursor: pointer;
     user-select: none;
+    margin: 2px;
 }
 
 .title {
@@ -91,7 +95,6 @@ body{
 #buttonCancel , #boton {
     cursor: pointer;
     width: 90px;
-    height: 35px;
     margin: 5px;
 }
 

@@ -43,7 +43,8 @@ function restablecer() {
 //evento del teclado en el campo filtro
 filtro.addEventListener('keyup', filtrarItems);
 
-function haycamposNULL(){
+//Comprobar si los campos estan vacios
+function inputNull(){
   var newItemNombre = document.getElementById('nombre').value;
   var newItemApellido = document.getElementById('apellido').value;
   var newItemEdad = document.getElementById('edad').value;
@@ -65,12 +66,12 @@ function haycamposNULL(){
 //Funcion para agregar un usuario a la lista...
 function agregarItem(){
 
-    if ( ! haycamposNULL() ){
-    Toastify({
+    if ( ! inputNull() ){
+    /* Toastify({
         text:  `Item  Agregado`,
         backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
         duration: 3000
-        }).showToast();
+        }).showToast(); */
 
         //Guardar DAtos en Cloud Storage Firebase
         var nameForFirebase = document.getElementById('nombre').value;
@@ -82,11 +83,24 @@ function agregarItem(){
           apellido: apellidoForFirebase,
           edad: edadForFirebase
         })
+        
+        Swal.fire({
+          title: 'Usuario Agregado: ',
+          text: `Nombre: ${nameForFirebase}` + "\n " + `Apellido: ${apellidoForFirebase}`,
+          icon: 'success',
+          showClass: {
+            popup: 'animate__animated animate__backInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__hinge'
+          },
+          timer: 2000,
+          showConfirmButton: false,
+        })
         .then(function(docRef) {
           document.getElementById('nombre').value = "";
           document.getElementById('apellido').value = "";
           document.getElementById('edad').value = "";
-          console.log("Usuario Guardado con id: ", docRef.id);
         })
         .catch(function(error) {
           console.error("Error al añadir el Usuario: ", error);
@@ -152,11 +166,19 @@ function eliminar(id){
       resetForm();
       //Reset Text Input
       document.getElementById('filtro').value = "";
-        Toastify({
-            text: "Usuario eliminado!",
-            backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
-            duration: 3000
-            }).showToast();
+      Swal.fire({
+        title: 'Usuario borrado correctamente',
+        text: "",
+        icon: 'success',
+        showClass: {
+          popup: 'animate__animated animate__backInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__backOutDown'
+        },
+        timer: 2000,
+        showConfirmButton: false,
+      })
 
     } else if (result.isDenied) {
         Toastify({
@@ -202,7 +224,7 @@ function editar(id, nameForFirebase, apellidoForFirebase, edadForFirebase) {
   boton.onclick = function() {
       var washingtonRef = db.collection("usuarios").doc(id);
 
-      if ( haycamposNULL() ) {
+      if ( inputNull() ) {
         return;
       };
 
@@ -218,11 +240,19 @@ function editar(id, nameForFirebase, apellidoForFirebase, edadForFirebase) {
         
         resetForm();
 
-        Toastify({
-          text: "Usuario editado!",
-          backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
-          duration: 3000
-          }).showToast();
+        Swal.fire({
+          title: 'Usuario editado correctamente: ',
+          text: `Nombre: ${nameForFirebase}` + "\n " + `Apellido: ${apellidoForFirebase}`,
+          icon: 'success',
+          showClass: {
+            popup: 'animate__animated animate__backInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__backOutDown'
+          },
+          timer: 2000,
+          showConfirmButton: false,
+        })
         console.log("Usuario editado!");
       }).catch(function(error) {
       // The document probably doesn't exist.
