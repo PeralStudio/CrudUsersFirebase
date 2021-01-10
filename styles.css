@@ -1,0 +1,212 @@
+#main {
+    background-color: #1AA2B8;
+    margin-top: 20px;
+}
+
+body{
+    background-color: #0a3b43;
+}
+
+.buttons {
+    text-align: center;
+    user-select: none;
+}
+
+#boton, #button {
+    cursor: pointer;
+    user-select: none;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+#formAgregrar {
+    justify-content: center;
+}
+
+.eliminar {
+    cursor: pointer;
+}
+
+.list-group-item {
+    width: 50%;
+    font-weight: 600;
+    font-size: 25px;
+    text-align: center;
+}
+
+.list-group {
+    align-items: center;
+}
+
+.emojis {
+    text-align: center;
+    font-size: 3rem;
+    width: 80px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.emoji {
+    cursor: pointer;
+    user-select: none;
+}
+
+.closed {
+    display: none;
+}
+
+.open {
+    display: none;
+}
+
+.open2 {
+    display: none;
+}
+
+/* .open3 {
+    display: none;
+}
+
+.open4 {
+    display: none;
+} */
+
+.active {
+    display: block;
+}
+
+#tabla {
+    background-color: beige;
+    font-weight: 700;
+}
+
+.tr > th {
+    text-decoration:underline ;
+}
+
+#buttonCancel , #boton {
+    cursor: pointer;
+    width: 90px;
+    height: 35px;
+    margin: 5px;
+}
+
+.no-visible {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.buttonsContainer {
+    display: flex;
+}
+
+
+
+/* ------------------------------------Responsive----------------------------------------- */
+
+@media screen and (max-width: 991px) {
+
+    #boton, #buttonCancel {
+        font-size: 12px;
+        cursor: pointer;
+        width: 75px;
+        height: 37px;
+        margin: 5px;
+    }
+
+    .buttonsContainer {
+        display: flex;
+    }
+
+    #header-title {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 777px) {
+
+    #boton, #buttonCancel {
+        display: flex;
+        font-size: 12px;
+        cursor: pointer;
+        width: 75px;
+        height: 37px;
+        margin: 5px;
+    }
+    
+    .buttonsContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .form-inline {
+        display: contents;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    #header-title {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+}
+
+
+@media screen and (max-width: 575px) {
+
+    #header-title {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    #buttonFirst  {
+        margin-top: 10px;
+    }
+
+    .container {
+        margin-right: auto;
+        margin-left: auto;
+        padding-right: 0;
+        padding-left: 0;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 496px) {
+
+    .table {
+        font-size: 12px;
+    }
+
+    #tabla {
+        background-color: transparent !important;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+    
+    .item > td {
+        padding: 0;
+    }
+    
+}
+
+
+
+
+
+
