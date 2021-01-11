@@ -1,10 +1,33 @@
 #main {
-    background-color: #1AA2B8;
+    background-color: #096775;
     margin-top: 20px;
+}
+
+#main-header {
+    background-color: #096775 !important;
 }
 
 body{
     background-color: #0a3b43;
+}
+
+.tr {
+    background-color: cadetblue;
+}
+
+.table {
+    border-collapse:separate;
+}
+
+.table thead th {
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+
+}
+
+.td-delete, .td-edit {
+    text-align: center;
 }
 
 .buttons {
@@ -23,6 +46,7 @@ body{
 
 .title {
     text-align: center;
+    text-decoration: underline;
     margin-bottom: 20px;
     font-weight: 700;
 }
@@ -84,8 +108,9 @@ body{
 }
 
 #tabla {
-    background-color: beige;
+    background-color: white;
     font-weight: 700;
+    text-align: center;
 }
 
 .tr > th {
@@ -190,15 +215,15 @@ body{
 @media screen and (max-width: 496px) {
 
     .table {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     #tabla {
-        background-color: transparent !important;
+        background-color: white;
     }
 
     .btn {
-        font-size: 14px;
+        font-size: 10px;
     }
     
     .item > td {
