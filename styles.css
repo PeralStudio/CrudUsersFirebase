@@ -210,6 +210,10 @@ body{
         padding-left: 0;
         width: 100%;
     }
+
+    #button {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 496px) {
@@ -228,6 +232,10 @@ body{
     
     .item > td {
         padding: 0;
+    }
+
+    #button {
+        display: none;
     }
     
 }
