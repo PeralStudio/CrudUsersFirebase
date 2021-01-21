@@ -1,8 +1,8 @@
 // Initializar cloud Storage Firebase...
   firebase.initializeApp({
-    apiKey: 'x',
-    authDomain: 'x',
-    projectId: 'x'
+    apiKey: 'AIzaSyAvnTHIjlD_xN92aud9jbj9XojG7-QUfRU',
+    authDomain: 'pruebalistaitems.firebaseapp.com',
+    projectId: 'pruebalistaitems'
   });
 
 var db = firebase.firestore();
@@ -14,15 +14,17 @@ db.collection("usuarios").onSnapshot((querySnapshot) => {
   querySnapshot.forEach((doc) => {
       console.log(`${doc.id} => ${doc.data().nombre}, ${doc.data().apellido}, ${doc.data().edad}`);
       tabla.innerHTML += 
-      `<tr class="item">
-      <td>${doc.data().nombre}</td>
-      <td>${doc.data().apellido}</td>
-      <td>${doc.data().edad}</td>
+      `<tr class="item" id="${doc.id}">
+      <td id="${doc.id}_nombre">${doc.data().nombre}</td>
+      <td id="${doc.id}_apellido">${doc.data().apellido}</td>
+      <td id="${doc.id}_edad">${doc.data().edad}</td>
       <td class="td-delete"><button class="btn btn-danger" onClick="eliminar('${doc.id}')">Eliminar</button></td>
-      <td class="td-edit"><button class="btn btn-warning" onClick="editar('${doc.id}', '${doc.data().nombre}', '${doc.data().apellido}', '${doc.data().edad}')">Editar</button></td>
+      <td class="td-edit"><button class="btn btn-warning" onClick="editar('${doc.id}')">Editar</button></td>
     </tr>`
   });
 });
+
+{/* <td class="td-edit"><button class="btn btn-warning" onClick="editar('${doc.id}', '${doc.data().nombre}', '${doc.data().apellido}', '${doc.data().edad}')">Editar</button></td> */}
 
 //Cambiar fondo body...
 function backgroundColor() {
@@ -191,8 +193,29 @@ function eliminar(id){
   }
 
 
+  function isEqual(id) {
+  
+    var nameForFirebase = document.getElementById(`${id}_nombre`).innerText
+    var apellidoForFirebase = document.getElementById(`${id}_apellido`).innerText
+    var edadForFirebase = document.getElementById(`${id}_edad`).innerText;
+
+    var nameEdit = document.getElementById('nombre').value;
+    var apellidoEdit = document.getElementById('apellido').value;
+    var edadEdit = document.getElementById('edad').value;
+
+    if ( nameForFirebase === nameEdit &&
+         apellidoForFirebase === apellidoEdit &&
+         edadForFirebase === edadEdit ){
+           return 1
+    } else {
+      return 0
+    }
+  }
+
+
+
 //Editar Usuarios / Firebase...
-function editar(id, nameForFirebase, apellidoForFirebase, edadForFirebase) {
+function editar(id) {
 
   window.scrollTo({
     top: 0,
@@ -200,9 +223,12 @@ function editar(id, nameForFirebase, apellidoForFirebase, edadForFirebase) {
     behavior: 'smooth'
   });
 
+  var nameForFirebase = document.getElementById(`${id}_nombre`).innerText
+  var apellidoForFirebase = document.getElementById(`${id}_apellido`).innerText
   document.getElementById('nombre').value = nameForFirebase;
   document.getElementById('apellido').value = apellidoForFirebase;
-  document.getElementById('edad').value = edadForFirebase;
+  document.getElementById('edad').value = document.getElementById(`${id}_edad`).innerText;
+  
   //var boton = document.getElementById('boton');
   boton.value = "Editar"
 
@@ -232,6 +258,15 @@ function editar(id, nameForFirebase, apellidoForFirebase, edadForFirebase) {
       var apellidoForFirebase = document.getElementById('apellido').value;
       var edadForFirebase = document.getElementById('edad').value;
 
+      if ( isEqual(id)) {
+        Toastify({
+          text: `Editar: sin cambios en ${nameForFirebase} ${apellidoForFirebase}`,
+          backgroundColor: "linear-gradient(to right, #007acc, #003D66)",
+          duration: 3000
+          }).showToast();
+        resetForm()
+        return
+      }
       return washingtonRef.update({
         nombre: nameForFirebase,
         apellido: apellidoForFirebase,
@@ -263,6 +298,78 @@ function editar(id, nameForFirebase, apellidoForFirebase, edadForFirebase) {
 
   
 }
+
+//Editar Usuarios / Firebase...
+// function editar(id, nameForFirebase, apellidoForFirebase, edadForFirebase) {
+
+//   window.scrollTo({
+//     top: 0,
+//     left: 0,
+//     behavior: 'smooth'
+//   });
+
+//   document.getElementById('nombre').value = nameForFirebase;
+//   document.getElementById('apellido').value = apellidoForFirebase;
+//   document.getElementById('edad').value = edadForFirebase;
+//   //var boton = document.getElementById('boton');
+//   boton.value = "Editar"
+
+//   var h1EditUsers = document.querySelector('#titlechange');
+//   h1EditUsers.textContent = `Editando ${nameForFirebase}, ${apellidoForFirebase}`;
+
+
+//   var buttonCancel = document.querySelector('.cancelar');
+//   /* console.log(buttonCancel); */
+//   buttonCancel.classList.remove('no-visible');
+//   buttonCancel.classList.add('visible');
+
+//   Toastify({
+//     text: `Editando ${nameForFirebase} ${apellidoForFirebase}`,
+//     backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+//     duration: 3000
+//     }).showToast();
+
+//   boton.onclick = function() {
+//       var washingtonRef = db.collection("usuarios").doc(id);
+
+//       if ( inputNull() ) {
+//         return;
+//       };
+
+//       var nameForFirebase = document.getElementById('nombre').value;
+//       var apellidoForFirebase = document.getElementById('apellido').value;
+//       var edadForFirebase = document.getElementById('edad').value;
+
+//       return washingtonRef.update({
+//         nombre: nameForFirebase,
+//         apellido: apellidoForFirebase,
+//         edad: edadForFirebase
+//       }).then(function() {
+        
+//         resetForm();
+
+//         Swal.fire({
+//           title: 'Usuario editado correctamente: ',
+//           text: `Nombre: ${nameForFirebase}` + "\n " + `Apellido: ${apellidoForFirebase}`,
+//           icon: 'success',
+//           showClass: {
+//             popup: 'animate__animated animate__backInDown'
+//           },
+//           hideClass: {
+//             popup: 'animate__animated animate__backOutDown'
+//           },
+//           timer: 2000,
+//           showConfirmButton: false,
+//         })
+//         console.log("Usuario editado!");
+//       }).catch(function(error) {
+//       // The document probably doesn't exist.
+//       console.error("Error: ", error);
+//       });
+
+//   }
+
+// }
 
 //Funcion cancelar Edit
 function cancelar() {
