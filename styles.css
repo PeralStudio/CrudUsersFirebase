@@ -139,6 +139,12 @@ body{
     display: flex;
 }
 
+.vertical-center {
+    min-height: 100%;  
+    display: flex;
+    align-items: center;
+  }
+
 
 /* ------------------------------------Responsive----------------------------------------- */
 
@@ -185,7 +191,7 @@ body{
 
     #header-title {
         text-align: center;
-        margin-bottom: 15px;
+        /* margin-bottom: 15px; */
     }
 
 }
@@ -195,7 +201,7 @@ body{
 
     #header-title {
         text-align: center;
-        margin-bottom: 15px;
+        /* margin-bottom: 15px; */
     }
 
     #buttonFirst  {
@@ -235,6 +241,11 @@ body{
 
     #button {
         display: none;
+    }
+
+    .vertical-center {
+        display: flex;
+        justify-content: center;
     }
     
 }
