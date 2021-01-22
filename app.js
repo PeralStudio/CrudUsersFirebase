@@ -192,7 +192,7 @@ function eliminar(id){
   });
   }
 
-
+//No edit if Inputs content equal
   function isEqual(id) {
   
     var nameForFirebase = document.getElementById(`${id}_nombre`).innerText
@@ -206,9 +206,9 @@ function eliminar(id){
     if ( nameForFirebase === nameEdit &&
          apellidoForFirebase === apellidoEdit &&
          edadForFirebase === edadEdit ){
-           return 1
+           return 1;
     } else {
-      return 0
+      return 0;
     }
   }
 
@@ -258,13 +258,13 @@ function editar(id) {
       var apellidoForFirebase = document.getElementById('apellido').value;
       var edadForFirebase = document.getElementById('edad').value;
 
-      if ( isEqual(id)) {
+      if (isEqual(id)) {
         Toastify({
           text: `Editar: sin cambios en ${nameForFirebase} ${apellidoForFirebase}`,
           backgroundColor: "linear-gradient(to right, #007acc, #003D66)",
           duration: 3000
           }).showToast();
-        resetForm()
+        resetForm();
         return
       }
       return washingtonRef.update({
