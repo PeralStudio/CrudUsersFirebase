@@ -6,6 +6,7 @@
   });
 
 var db = firebase.firestore();
+/* var idEditing = '' */
 
 //Leer documentos de Firebase...
 var tabla = document.getElementById('tabla');
@@ -133,7 +134,7 @@ function resetForm(){
 miFormulario = document.querySelector('#edad');
 miFormulario.addEventListener('keypress', function (e){
 	if (!soloNumeros(e)){
-  	e.preventDefault();
+    e.preventDefault();
     Toastify({
       text: "Solo permite introducir numeros",
       backgroundColor: "linear-gradient(0deg, rgba(220,54,69,1) 0%, rgba(61,10,15,1) 98%)",
@@ -204,18 +205,36 @@ function eliminar(id){
     var edadEdit = document.getElementById('edad').value;
 
     if ( nameForFirebase === nameEdit &&
-         apellidoForFirebase === apellidoEdit &&
-         edadForFirebase === edadEdit ){
-           return 1;
+      apellidoForFirebase === apellidoEdit &&
+      edadForFirebase === edadEdit) {
+      return 1;
     } else {
       return 0;
     }
   }
 
 
+//Editar solo si hay cambios
+
+
+/*function checkChanges(e) {
+  
+} */
+
+
+/* //evento del teclado en el campo filtro
+nombre.addEventListener('keyup', checkChanges);
+apellido.addEventListener('keyup', checkChanges);
+edad.addEventListener('keyup', checkChanges); */
+
+
+
 
 //Editar Usuarios / Firebase...
 function editar(id) {
+
+  /* idEditing = id */
+  
 
   window.scrollTo({
     top: 0,
